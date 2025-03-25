@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <h1>Car Explorer</h1>
+
+    <label for="makeFilter">Make:</label>
+    <select id="makeFilter">
+        <option value="All">All</option>
+        <option value="Lamborghini">Lamborghini</option>
+        <option value="Ferrari">Ferrari</option>
+        <option value="Porsche">Porsche</option>
+    </select>
+
+    <label for="typeFilter">Type:</label>
+    <select id="typeFilter">
+        <option value="All">All</option>
+        <option value="SUV">SUV</option>
+        <option value="Coupe">Coupe</option>
+    </select>
+
+    <label for="transmissionFilter">Transmission:</label>
+    <select id="transmissionFilter">
+        <option value="All">All</option>
+        <option value="Automatic">Automatic</option>
+        <option value="Manual">Manual</option>
+    </select>
+
+    <label for="drivetrainFilter">Drivetrain:</label>
+    <select id="drivetrainFilter">
+        <option value="All">All</option>
+        <option value="AWD">AWD</option>
+        <option value="RWD">RWD</option>
+    </select>
+
+    <button id="applyFilters">Apply Filters</button>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Type</th>
+                <th>HP</th>
+                <th>Torque</th>
+                <th>0-100 km/h</th>
+                <th>Top Speed</th>
+                <th>Fuel Efficiency</th>
+                <th>Transmission</th>
+                <th>Drivetrain</th>
+                <th>Price ($)</th>
+            </tr>
+        </thead>
+        <tbody id="carData"></tbody>
+    </table>
+</body>
+</html>
