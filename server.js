@@ -2,8 +2,7 @@ const express = require("express");
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 const fs = require("fs");
-const routes = require(path.join(__dirname, "routes", "routes.js")); // Make sure this path is correct
-
+const { router } = require(path.join(__dirname, "routes", "routes.js")); // ✅ Correctly importing only the router
 const app = express();
 
 // Set the views directory (if not using default 'views' directory)
@@ -11,8 +10,6 @@ app.set('views', __dirname + '/views');
 
 // Set the view engine (e.g., ejs)
 app.set('view engine', 'ejs');
-
-app.use('/', routes);
 
 // Database setup with error handling
 const dbPath = path.join(__dirname, ".database", "datasource.db");
@@ -38,26 +35,31 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/', router); // mounted the router(routes.js - urls) under /
 
-// Routes --> needs to be in routes.js file
-app.get('/users', (req, res) => {
+// // Routes --> needs to be in routes.js file
+// app.get('/users', (req, res) => {
+// // there was some code here previously
+//       db.all("SELECT * FROM cars", (err, results) => {
+//         if (err) {
+//             console.error("Database error:", err);
+//             return res.status(500).json({ error: err.message });
+//         }
+//       // Render the 'index.ejs' template and pass the results to it
+//       res.render('index', { users: results });
+//     });
+//   });
+  
+//code from above block
     // connection.query('SELECT * FROM cars', (err, results) => {
     //   if (err) {
     //     res.status(500).send('Database query error');
     //     return;
     //   }
-      db.all("SELECT * FROM cars", (err, results) => {
-        if (err) {
-            console.error("Database error:", err);
-            return res.status(500).json({ error: err.message });
-        }
-      // Render the 'index.ejs' template and pass the results to it
-      res.render('index', { users: results });
-    });
-  });
-  
 
+// Code from old_server.js  
 // app.get("/users", (req, res) => {
 //     console.log("Fetching cars...");
     // db.all("SELECT * FROM cars", (err, rows) => {
